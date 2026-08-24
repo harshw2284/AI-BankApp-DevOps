@@ -1,14 +1,15 @@
 name: DevSecOps Main Pipeline
 
 on:
-  push:
-    branches: [ main, devsecops, k8s ]
-    paths-ignore:
-      - '**.md'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'screenshots/**'
-      - 'scripts/**'
+  workflow_dispatch: 
+  #push:
+   # branches: [ main, devsecops, k8s ]
+   # paths-ignore:
+    #  - '**.md'
+    #  - '.gitignore'
+    #  - 'LICENSE'
+    #  - 'screenshots/**'
+    #  - 'scripts/**'
 
 permissions:
   id-token: write
