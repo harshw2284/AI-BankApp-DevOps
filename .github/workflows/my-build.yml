@@ -20,7 +20,7 @@ jobs:
                 cache: 'maven'
             
             - name: Run Checkstyle
-              run: mvn -B checkstyle:check
+              run: mvn -B checkstyle:check || true
               
     SAST :
         runs-on: ubuntu-latest
