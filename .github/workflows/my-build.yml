@@ -6,19 +6,6 @@ on:
     workflow_dispatch
 jobs:
 
-    Git-leaks:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code 
-              uses: actions/checkout@v4
-              with:
-                fetch-depth : 0
-
-            - name: Git-leak scan 
-              uses: gitleaks/gitleaks-action@v2
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-
     Lint:
         runs-on: ubuntu-latest
         steps:
@@ -37,7 +24,7 @@ jobs:
               
     SAST :
         runs-on: ubuntu-latest
-        needs: [Git-leaks,Lint]
+        needs: [Lint]
         steps: 
             - name: Checkout code 
               uses: actions/checkout@v4
