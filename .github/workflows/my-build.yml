@@ -22,6 +22,6 @@ jobs:
             - name: Run Checkstyle
               run: mvn -B checkstyle:check
 
-           # - name: Run Dependency scan
-           #  run: mvn org.owasp:dependency-check-maven:check
+            - name: Run Dependency scan
+              run: mvn org.owasp:dependency-check-maven:check
               
