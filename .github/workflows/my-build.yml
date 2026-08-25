@@ -20,3 +20,22 @@ jobs:
             - name: Build with Maven
               run: mvn -B clean package -DskipTests
 
+    image-scan:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Checkout code 
+              uses: actions/checkout@v4
+
+            - name: build image
+              run: docker build -t bankapp:${{github.sha}} .
+
+            - name: Scan Docker image with Trivy
+              uses: aquasecurity/trivy-action@master
+              with:
+                image-ref: 'bankapp:${{github.sha}}'
+                format: 'table'
+                exit-code: '1' 
+                ignore-unfixed: true
+                vuln-type: 'os,library'
+                severity: 'CRITICAL,HIGH'
+
